@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../../styles/Styles.js";
+import styles from "../../../styles/styles.js";
 import { navItems } from "../../../static/data.jsx";
 import { Link } from "react-router-dom";
 

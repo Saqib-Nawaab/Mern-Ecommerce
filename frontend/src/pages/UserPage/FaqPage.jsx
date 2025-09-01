@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/Layout/Header/Header.jsx";
 import Footer from "../../components/Layout/Footer/Footer.jsx";
-import styles from "../../styles/Styles.js";
+import styles from "../../styles/styles.js";
 import { AiOutlineArrowRight, AiOutlinePlus } from "react-icons/ai";
 import Faq from "../../components/Faq/Faq.jsx";
 function FaqPage() {

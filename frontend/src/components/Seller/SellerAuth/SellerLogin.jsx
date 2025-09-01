@@ -1,6 +1,6 @@
 import { React, useState,  } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import styles from "../../../styles/Styles.js";
+import styles from "../../../styles/styles.js";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";

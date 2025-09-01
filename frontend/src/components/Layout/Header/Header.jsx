@@ -10,7 +10,7 @@ import {
   IoIosArrowForward,
   BiMenuAltLeft,
 } from "../../../assets/icons/index.js";
-import styles from "../../../styles/Styles.js";
+import styles from "../../../styles/styles.js";
 import { categoriesData } from "../../../static/data.jsx";
 import DropDown from "../DropDown/DropDown.jsx";
 import Navbar from "../Navbar/Navbar.jsx";
