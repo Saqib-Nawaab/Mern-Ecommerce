@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styles from "../../../styles/Styles";
+import styles from "../../../styles/styles";
 import {
   AiFillHeart,
   AiOutlineEye,

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../../styles/Styles";
+import styles from "../../../styles/styles";
 
 function Sponsored() {
   const companyLogos = [

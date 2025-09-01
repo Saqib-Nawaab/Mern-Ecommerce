@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../styles/Styles";
+import styles from "../../../styles/styles";
 import { AiFillHeart, AiOutlineHeart, AiOutlineMessage, AiOutlineShoppingCart } from "../../../assets/icons/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { addTocart } from "../../../redux/actions/cart.js";

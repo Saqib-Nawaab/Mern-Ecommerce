@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../../styles/Styles";
+import styles from "../../../styles/styles";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsUser } from "../../../redux/actions/product.js";

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "../../../styles/Styles";
+import styles from "../../../styles/styles";
 import EventCard from "../EventCard/EventCard.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllEventsUser } from "../../../redux/actions/event.js";

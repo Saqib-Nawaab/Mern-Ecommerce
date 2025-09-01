@@ -3,7 +3,7 @@ import { RxCross1 } from "react-icons/rx";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "../../styles/Styles";
+import styles from "../../styles/styles";
 import { removeFromWishlist } from "../../redux/actions/heart.js";
 import { addTocart } from "../../redux/actions/cart.js"; // Import your cart actions if needed
 import { toast } from "react-toastify";
