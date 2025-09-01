@@ -3,8 +3,6 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import bcrypt from "bcryptjs";
-import path from "path";
-import fs from "fs";
 import jwt from "jsonwebtoken";
 import sendMail from "../utils/sendMail.js";
 import { sendToken } from "../utils/jwtToken.js";
@@ -15,21 +13,13 @@ import { uploadToCloudinary, destroy } from "../config/uploadToCloudinary.js";
 const createUser = asyncHandler(async (req, res, next) => {
   const { name, email, password } = req.body;
 
+  if (!name || !email || !password) {
+    return next(new ErrorHandler("Name, email, and password are required", 400));
+  }
+
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
-    if (req.file?.filename) {
-      const filePath = path.resolve("uploads", req.file.filename);
-
-      if (fs.existsSync(filePath)) {
-        try {
-          fs.unlinkSync(filePath);
-        } catch (err) {
-          return next(new ErrorHandler("Failed to delete file", 500));
-        }
-      }
-    }
-
     return next(new ErrorHandler("User already exists", 400));
   }
 
@@ -38,18 +28,13 @@ const createUser = asyncHandler(async (req, res, next) => {
     url: "default",
   };
 
-  if (req.file?.path) {
-    const cloudinaryUpload = await uploadToCloudinary(req.file.path);
+  if (req.file?.buffer) {
+    const cloudinaryUpload = await uploadToCloudinary(req.file.buffer);
     if (!cloudinaryUpload) {
       return next(new ErrorHandler("Avatar upload failed", 500));
     }
     avatar = cloudinaryUpload;
   }
-
-  // const avatar = {
-  //   public_id: req.file.filename,
-  //   url: req.file.path,
-  // };
 
   const activationToken = jwt.sign(
     { name, email, password, avatar },
@@ -226,7 +211,7 @@ const updateAvatar = asyncHandler(async (req, res, next) => {
     });
   }
 
-  const cloudinaryUpload = await uploadToCloudinary(req.file.path, {
+  const cloudinaryUpload = await uploadToCloudinary(req.file.buffer, {
     timeout: 120000,
   });
 

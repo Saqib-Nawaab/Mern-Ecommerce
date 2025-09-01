@@ -1,11 +1,10 @@
 import { Seller } from "../models/seller.model.js";
 import { Product } from "../models/product.model.js";
+import { Event } from "../models/event.model.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import bcrypt from "bcryptjs";
-import path from "path";
-import fs from "fs";
 import jwt from "jsonwebtoken";
 import sendMail from "../utils/sendMail.js";
 import { sendToken } from "../utils/sellerJwtToken.js";
@@ -16,21 +15,13 @@ import { uploadToCloudinary, destroy } from "../config/uploadToCloudinary.js";
 const createSeller = asyncHandler(async (req, res, next) => {
   const { name, email, password, phoneNumber, address, zipCode } = req.body;
 
+  if (!name || !email || !password || !phoneNumber || !address || !zipCode) {
+    return next(new ErrorHandler("All fields are required", 400));
+  }
+
   const existingSeller = await Seller.findOne({ email });
 
   if (existingSeller) {
-    if (req.file?.filename) {
-      const filePath = path.resolve("uploads", req.file.filename);
-
-      if (fs.existsSync(filePath)) {
-        try {
-          fs.unlinkSync(filePath);
-        } catch (err) {
-          return next(new ErrorHandler("Failed to delete file", 500));
-        }
-      }
-    }
-
     return next(new ErrorHandler("Seller already exists", 400));
   }
 
@@ -39,8 +30,8 @@ const createSeller = asyncHandler(async (req, res, next) => {
     url: "default",
   };
 
-  if (req.file?.path) {
-    const cloudinaryUpload = await uploadToCloudinary(req.file.path);
+  if (req.file?.buffer) {
+    const cloudinaryUpload = await uploadToCloudinary(req.file.buffer);
     if (!cloudinaryUpload) {
       return next(new ErrorHandler("Avatar upload failed", 500));
     }
@@ -240,7 +231,7 @@ const updateAvatar = asyncHandler(async (req, res, next) => {
     });
   }
 
-  const cloudinaryUpload = await uploadToCloudinary(req.file.path, {
+  const cloudinaryUpload = await uploadToCloudinary(req.file.buffer, {
     timeout: 120000,
   });
 

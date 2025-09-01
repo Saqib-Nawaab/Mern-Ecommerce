@@ -19,12 +19,12 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-app.use(cors({origin: "https://mern-ecommerce-frontend-rust.vercel.app",credentials: true,}));
+app.use(cors({origin: ["https://mern-ecommerce-frontend-rust.vercel.app","http://localhost:5173"],credentials: true,}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 // app.use('/', express.static('uploads'));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/v2/user", userRouter);
 app.use("/api/v2/seller", sellerRouter);

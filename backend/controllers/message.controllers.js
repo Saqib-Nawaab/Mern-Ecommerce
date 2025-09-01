@@ -15,7 +15,7 @@ const createNewMessage = asyncHandler(async (req, res, next) => {
   let images = [];
   if (req.files && req.files.images && req.files.images.length > 0) {
     for (const file of req.files.images) {
-      const result = await uploadToCloudinary(file.path, "messages");
+      const result = await uploadToCloudinary(file.buffer, "messages");
       if (!result) {
         return next(new ErrorHandler("Image upload failed", 500));
       }

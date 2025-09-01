@@ -3,8 +3,6 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import bcrypt from "bcryptjs";
-import path from "path";
-import fs from "fs";
 import jwt from "jsonwebtoken";
 import sendMail from "../utils/sendMail.js";
 import { sendToken } from "../utils/sellerJwtToken.js";
@@ -51,12 +49,12 @@ const createEvent = asyncHandler(async (req, res, next) => {
     }
 
     if (!req.files || !req.files.file || req.files.file.length === 0) {
-      return next(new ErrorHandler("Product images are required", 400));
+      return next(new ErrorHandler("Event images are required", 400));
     }
 
     const images = [];
     for (const file of req.files.file) {
-      const result = await uploadToCloudinary(file.path);
+      const result = await uploadToCloudinary(file.buffer);
       if (!result) {
         return next(new ErrorHandler("Image upload failed", 500));
       }

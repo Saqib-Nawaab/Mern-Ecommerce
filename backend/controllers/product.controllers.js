@@ -3,8 +3,6 @@ import asyncHandler from "../middlewares/asyncHandler.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import bcrypt from "bcryptjs";
-import path from "path";
-import fs from "fs";
 import jwt from "jsonwebtoken";
 import sendMail from "../utils/sendMail.js";
 import { sendToken } from "../utils/sellerJwtToken.js";
@@ -52,7 +50,7 @@ const createProduct = asyncHandler(async (req, res, next) => {
 
     const images = [];
     for (const file of req.files.file) {
-      const result = await uploadToCloudinary(file.path);
+      const result = await uploadToCloudinary(file.buffer);
       if (!result) {
         return next(new ErrorHandler("Image upload failed", 500));
       }
