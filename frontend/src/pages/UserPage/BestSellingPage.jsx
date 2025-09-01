@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "../../components/Layout/Header/Header.jsx";
-import styles from "../../styles/Styles.js";
+import styles from "../../styles/styles.js";
 import { productData } from "../../static/data.jsx";
 import { useState } from "react";
 import ProductCard from "../../components/Route/ProductCard/ProductCard.jsx";

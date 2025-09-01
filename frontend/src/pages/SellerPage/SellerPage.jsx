@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/Styles.js";
+import styles from "../../styles/styles.js";
 import SellerInfo from "../../components/Seller/Layout/SellerData/SellerInfo/SellerInfo.jsx";
 import SellerProfileData from "../../components/Seller/Layout/SellerData/SellerProfileData/SellerProfileData.jsx";
 import { FiMenu, FiX } from "react-icons/fi";

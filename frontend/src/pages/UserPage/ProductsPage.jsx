@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "../../components/Layout/Header/Header.jsx";
-import styles from "../../styles/Styles.js";
+import styles from "../../styles/styles.js";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductCard from "../../components/Route/ProductCard/ProductCard.jsx";
