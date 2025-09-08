@@ -48,7 +48,7 @@ const createOrder = asyncHandler(async (req, res, next) => {
       orders.push(order);
     }
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       orders,
     });
@@ -64,7 +64,7 @@ const getAllOrders = asyncHandler(async (req, res, next) => {
       createdAt: -1,
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: orders,
     });
@@ -81,7 +81,7 @@ const getOrderById = asyncHandler(async (req, res, next) => {
       return next(new ErrorHandler("Order not found", 404));
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: order,
     });
@@ -130,7 +130,7 @@ const updateOrderStatus = asyncHandler(async (req, res, next) => {
 
     await order.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: order,
     });
@@ -150,7 +150,7 @@ const deleteOrder = asyncHandler(async (req, res, next) => {
 
     await Order.findByIdAndDelete(id);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Order deleted successfully",
     });
@@ -167,7 +167,7 @@ const getSellerAllOrder = asyncHandler(async (req, res, next) => {
       createdAt: -1,
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: orders,
     });
@@ -189,7 +189,7 @@ const refundOrder = asyncHandler(async (req, res, next) => {
 
     await order.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Order refunded successfully",
     });

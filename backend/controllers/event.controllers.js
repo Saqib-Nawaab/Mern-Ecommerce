@@ -76,7 +76,7 @@ const createEvent = asyncHandler(async (req, res, next) => {
       end_Date: endDate,
     });
 
-    res.status(201).json(new ApiResponse("Event created successfully", event));
+    return res.status(201).json(new ApiResponse("Event created successfully", event));
   } catch (error) {
     next(new ErrorHandler(error.message || "Event creation failed", 500));
   }
@@ -111,7 +111,7 @@ const deleteEvent = asyncHandler(async (req, res, next) => {
       return next(new ErrorHandler("Event not found", 404));
     }
 
-    res.status(200).json(new ApiResponse("Event deleted successfully"));
+    return res.status(200).json(new ApiResponse("Event deleted successfully"));
   } catch (error) {
     next(new ErrorHandler(error.message || "Failed to delete event", 500));
   }

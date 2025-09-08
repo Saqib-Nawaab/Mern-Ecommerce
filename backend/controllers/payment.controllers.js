@@ -28,7 +28,7 @@ const paymentProcess = asyncHandler(async (req, res, next) => {
         company: "Mern Ecommerce",
       },
     });
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       clientSecret: paymentIntent.client_secret,
     });
@@ -39,7 +39,7 @@ const paymentProcess = asyncHandler(async (req, res, next) => {
 
 const stripeApiKey = asyncHandler(async (req, res, next) => {
   try {
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       stripeApiKey: CONFIG.STRIPE_PUBLIC_KEY,
     });

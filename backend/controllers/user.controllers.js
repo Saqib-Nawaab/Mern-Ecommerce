@@ -106,11 +106,6 @@ const activation = asyncHandler(async (req, res, next) => {
   });
 
   sendToken(user, 201, res);
-  return res.status(201).json({
-    success: true,
-    already: false,
-    message: "Account activated successfully!",
-  });
 });
 
 const loginUser = asyncHandler(async (req, res, next) => {

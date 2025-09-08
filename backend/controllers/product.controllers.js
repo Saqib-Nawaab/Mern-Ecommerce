@@ -107,7 +107,7 @@ const deleteProduct = asyncHandler(async (req, res, next) => {
       return next(new ErrorHandler("Product not found", 404));
     }
 
-    res.status(200).json(new ApiResponse("Product deleted successfully"));
+    return res.status(200).json(new ApiResponse("Product deleted successfully"));
   } catch (error) {
     next(new ErrorHandler(error.message || "Failed to delete product", 500));
   }
@@ -116,7 +116,7 @@ const deleteProduct = asyncHandler(async (req, res, next) => {
 const getAllProductsUser = asyncHandler(async (req, res, next) => {
   try {
     const products = await Product.find();
-    res
+    return res
       .status(200)
       .json(new ApiResponse("Products fetched successfully", products));
   } catch (error) {
@@ -145,7 +145,7 @@ const createReview = asyncHandler(async (req, res, next) => {
 
     await product.save();
 
-    res
+    return res
       .status(201)
       .json(new ApiResponse("Review created successfully", product));
   } catch (error) {

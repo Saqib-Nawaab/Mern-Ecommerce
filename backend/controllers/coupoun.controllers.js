@@ -82,7 +82,7 @@ const deleteCoupoun = asyncHandler(async (req, res, next) => {
       return next(new ErrorHandler("Coupoun not found", 404));
     }
 
-    res.status(200).json(new ApiResponse("Coupoun deleted successfully"));
+    return res.status(200).json(new ApiResponse("Coupoun deleted successfully"));
   } catch (error) {
     next(new ErrorHandler(error.message || "Failed to delete coupoun", 500));
   }
@@ -101,7 +101,7 @@ const getCoupon = asyncHandler(async (req, res, next) => {
       return next(new ErrorHandler("Coupon not found", 404));
     }
 
-    res
+    return res
       .status(200)
       .json(new ApiResponse("Coupon fetched successfully", coupon));
   } catch (error) {
