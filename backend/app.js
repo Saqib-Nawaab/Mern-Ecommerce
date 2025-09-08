@@ -15,10 +15,16 @@ import orderRouter from "./routes/order.routes.js";
 import conversationRouter from "./routes/conversation.routes.js";
 import messageRouter from "./routes/message.routes.js";
 import adminRouter from "./routes/admin.routes.js";
+import connectDatabase from "./db/Database.js";
+import connectCloudinary from "./config/cloudinary.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+
+// Connect to database and cloudinary
+connectDatabase();
+connectCloudinary();
 
 app.use(cors({origin: ["https://mern-ecommerce-frontend-rust.vercel.app","http://localhost:5173"],credentials: true,}));
 app.use(express.json());
