@@ -37,4 +37,5 @@ const isSellerAuthenticated = asyncHandler(async (req, res, next) => {
   }
 });
 
+
 export { isAuthenticated, isSellerAuthenticated };

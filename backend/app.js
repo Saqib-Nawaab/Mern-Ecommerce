@@ -14,6 +14,7 @@ import paymentRouter from "./routes/payment.routes.js";
 import orderRouter from "./routes/order.routes.js";
 import conversationRouter from "./routes/conversation.routes.js";
 import messageRouter from "./routes/message.routes.js";
+import adminRouter from "./routes/admin.routes.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -35,6 +36,7 @@ app.use("/api/v2/payment", paymentRouter);
 app.use("/api/v2/order", orderRouter);
 app.use("/api/v2/message", messageRouter);
 app.use("/api/v2/conversation", conversationRouter);
+app.use("/api/v2/admin", adminRouter);
 
 app.use(errorMiddleware);
 

@@ -33,6 +33,15 @@ import SellerSettingsPage from "./pages/SellerPage/SellerSettingsPage.jsx";
 import SellerWithdrawMoneyPage from "./pages/SellerPage/SellerWithdrawMoneyPage.jsx";
 import SellerInboxPage from './pages/SellerPage/SellerInboxPage.jsx';
 
+
+import AdminDashboardMainPage from "./pages/AdminPage/AdminDashboardMainPage.jsx";
+import AdminDashboardWithdrawPage from "./pages/AdminPage/AdminDashboardWithdrawPage.jsx";
+import AdminDashboardEventsPage from "./pages/AdminPage/AdminDashboardEventsPage.jsx";
+import AdminDashboardProductsPage from "./pages/AdminPage/AdminDashboardProductsPage.jsx";
+import AdminDashboardUsersPage from "./pages/AdminPage/AdminDashboardUsersPage.jsx";
+import AdminDashboardSellersPage from "./pages/AdminPage/AdminDashboardSellersPage.jsx";
+import AdminDashboardOrdersPage from "./pages/AdminPage/AdminDashboardOrdersPage.jsx";
+
 export {
   
   LoginPage,
@@ -67,5 +76,14 @@ export {
   SellerOrderRefundPage,
   SellerSettingsPage,
   SellerWithdrawMoneyPage,
-  SellerInboxPage
+  SellerInboxPage,
+
+  AdminDashboardMainPage,
+  AdminDashboardWithdrawPage,
+  AdminDashboardEventsPage,
+  AdminDashboardProductsPage,
+  AdminDashboardOrdersPage,
+  AdminDashboardSellersPage,
+  AdminDashboardUsersPage
+
 };

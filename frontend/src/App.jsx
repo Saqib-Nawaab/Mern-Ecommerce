@@ -7,6 +7,7 @@ import Loading from "./components/Loading/Loading.jsx";
 
 import UserRoutes from "./Routes/UserRoutes/UserRoutes.jsx";
 import SellerRoutes from "./Routes/SellerRoutes/SellerRoutes.jsx";
+import AdminRoutes from "./Routes/AdminRoutes/AdminRoutes.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const App = () => {
       <Routes>
         {UserRoutes}
         {SellerRoutes}
+        {AdminRoutes}
       </Routes>
     </BrowserRouter>
   );
