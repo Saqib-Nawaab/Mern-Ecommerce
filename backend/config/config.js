@@ -30,9 +30,9 @@ const CONFIG = {
   SMTP_USER: process.env.SMTP_USER,
   SMTP_FROM_EMAIL: process.env.SMTP_FROM_EMAIL,
 
-  ACTIVATION_URL: process.env.ACTIVATION_URL,
+  ACTIVATION_URL: process.env.ACTIVATION_URL || (process.env.NODE_ENV === "production" ? "https://mern-ecommerce-frontend-rust.vercel.app/activate" : "http://localhost:5173/activate"),
   ACTIVATION_JWT_SECRET: process.env.ACTIVATION_JWT_SECRET,
-  Seller_ACTIVATION_URL: process.env.Seller_ACTIVATION_URL,
+  Seller_ACTIVATION_URL: process.env.Seller_ACTIVATION_URL || (process.env.NODE_ENV === "production" ? "https://mern-ecommerce-frontend-rust.vercel.app/activate-seller" : "http://localhost:5173/activate-seller"),
   Seller_ACTIVATION_JWT_SECRET: process.env.Seller_ACTIVATION_JWT_SECRET,
 
   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
