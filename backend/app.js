@@ -26,7 +26,7 @@ const app = express();
 connectDatabase();
 connectCloudinary();
 
-app.use(cors({origin: ["https://mern-ecommerce-frontend-rust.vercel.app","http://localhost:5173"],credentials: true,}));
+app.use(cors({origin: ["https://mern-ecommerce-frontend-delta-amber.vercel.app","http://localhost:5173"],credentials: true,}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
