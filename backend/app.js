@@ -38,6 +38,8 @@ app.use("/api/v2/message", messageRouter);
 app.use("/api/v2/conversation", conversationRouter);
 app.use("/api/v2/admin", adminRouter);
 
+app.get("/", (req, res) => res.send("API is running"));
+
 app.use(errorMiddleware);
 
 export default app;
