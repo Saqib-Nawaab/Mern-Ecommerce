@@ -26,7 +26,28 @@ const app = express();
 connectDatabase();
 connectCloudinary();
 
-app.use(cors({origin: ["https://mern-ecommerce-frontend-delta-amber.vercel.app","http://localhost:5173"],credentials: true,}));
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      "https://mern-ecommerce-frontend-delta-amber.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000"
+    ];
+    
+    // Check if the origin is in the allowed origins or if it's a Vercel preview URL
+    if (allowedOrigins.includes(origin) || origin.includes("vercel.app")) {
+      return callback(null, true);
+    }
+    
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));

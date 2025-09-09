@@ -15,6 +15,9 @@ const isAuthenticated = asyncHandler(async (req, res, next) => {
   try {
     const decodedData = jwt.verify(token, CONFIG.JWT_SECRET_KEY);
     req.user = await User.findById(decodedData.id);
+    if (!req.user) {
+      return next(new ErrorHandler("User not found", 401));
+    }
     next();
   } catch (error) {
     return next(new ErrorHandler("Invalid token", 401));
@@ -31,6 +34,9 @@ const isSellerAuthenticated = asyncHandler(async (req, res, next) => {
   try {
     const decodedData = jwt.verify(token, CONFIG.Seller_JWT_SECRET_KEY);
     req.seller = await Seller.findById(decodedData.id);
+    if (!req.seller) {
+      return next(new ErrorHandler("Seller not found", 401));
+    }
     next();
   } catch (error) {
     return next(new ErrorHandler("Invalid token", 401));

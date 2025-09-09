@@ -151,6 +151,8 @@ const logOutUser = asyncHandler(async (req, res, next) => {
     res.cookie("token", null, {
       httpOnly: true,
       expires: new Date(Date.now()),
+      secure: CONFIG.NODE_ENV === "production",
+      sameSite: CONFIG.NODE_ENV === "production" ? "none" : "lax",
     });
 
     return res

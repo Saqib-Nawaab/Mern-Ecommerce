@@ -33,6 +33,10 @@ const SellerLogin = () => {
       );
 
       if (response.data.success) {
+        // Store seller token in localStorage as fallback for Vercel deployment
+        if (response.data.data && response.data.data.token) {
+          localStorage.setItem("sellerToken", response.data.data.token);
+        }
         toast.success("Login successful");
         navigate(`/seller/${response.data?.seller?.id}`);
       } else {

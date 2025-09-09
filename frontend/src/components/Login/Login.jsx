@@ -38,9 +38,14 @@ const Login = () => {
       );
 
       if (response.data.success) {
+        // Store token in localStorage as fallback for Vercel deployment
+        if (response.data.data && response.data.data.token) {
+          localStorage.setItem("token", response.data.data.token);
+        }
         toast.success("Login successful");
+        // Load user data immediately after successful login
+        await dispatch(loadUser());
         navigate(from, { replace: true });
-        dispatch(loadUser());
       } else {
         toast.error(response.data.message);
       }

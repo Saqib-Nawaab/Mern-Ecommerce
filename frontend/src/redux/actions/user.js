@@ -4,9 +4,21 @@ import { server } from "../../server";
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: "LoadUserRequest" });
-    const { data } = await axios.get(`${server}/user/getUser`, {
+    
+    // Try with cookies first
+    let config = {
       withCredentials: true,
-    });
+    };
+    
+    // If we have a token in localStorage, add it to headers as fallback
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers = {
+        Authorization: `Bearer ${token}`,
+      };
+    }
+    
+    const { data } = await axios.get(`${server}/user/getUser`, config);
 
     const user = data.data || data.user;
 
@@ -28,15 +40,32 @@ export const loadUser = () => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
   try {
     dispatch({ type: "LogoutUserRequest" });
-    const { data } = await axios.get(`${server}/user/logout`, {
+    
+    // Configure request with both cookies and header token
+    let config = {
       withCredentials: true,
-    });
+    };
+    
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers = {
+        Authorization: `Bearer ${token}`,
+      };
+    }
+    
+    const { data } = await axios.get(`${server}/user/logout`, config);
+
+    // Clear localStorage token
+    localStorage.removeItem("token");
 
     dispatch({
       type: "LogoutUserSuccess",
       payload: data.message,
     });
   } catch (error) {
+    // Clear localStorage token even if logout request fails
+    localStorage.removeItem("token");
+    
     dispatch({
       type: "LogoutUserFail",
       payload:

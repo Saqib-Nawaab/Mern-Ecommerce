@@ -11,6 +11,8 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + CONFIG.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    secure: CONFIG.NODE_ENV === "production",
+    sameSite: CONFIG.NODE_ENV === "production" ? "none" : "lax",
   };
 
   res.status(statusCode).cookie("token", token, options).json(

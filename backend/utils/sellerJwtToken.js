@@ -10,7 +10,9 @@ const sendToken = (seller, statusCode, res) => {
     expires: new Date(
       Date.now() + CONFIG.Seller_JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true, 
+    httpOnly: true,
+    secure: CONFIG.NODE_ENV === "production",
+    sameSite: CONFIG.NODE_ENV === "production" ? "none" : "lax",
   };
 
   res.status(statusCode).cookie("Stoken", token, options).json(
