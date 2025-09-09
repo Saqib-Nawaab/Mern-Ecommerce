@@ -1,5 +1,12 @@
 # 🛍️ MERN E-Commerce Platform
 
+
+![structre](https://res.cloudinary.com/djfem14lf/image/upload/v1757400630/Screenshot_2025-09-08_234950_etbo4q.png)
+
+
+
+
+
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
